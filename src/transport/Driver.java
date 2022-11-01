@@ -45,7 +45,7 @@ public class Driver<T extends License> {
     }
 
     public void refill() {
-        transport.refill(transport.getAllowedFuels()[0]);
+        transport.refill();
     }
 
     @Override

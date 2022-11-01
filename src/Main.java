@@ -48,6 +48,5 @@ public class Main {
         sidorov.refill();
         sidorov.stop();
         System.out.println(sidorov + "\n");
-
     }
 }

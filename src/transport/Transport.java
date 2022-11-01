@@ -34,6 +34,10 @@ public abstract class Transport {
         return engineVolume;
     }
 
+    public Fuel getFuel() {
+        return fuel;
+    }
+
     public void start() {
         System.out.println(getBrand() + " " + getModel() + " начал движение");
     }
@@ -42,7 +46,10 @@ public abstract class Transport {
         System.out.println(getBrand() + " " + getModel() + " закончил движение");
     }
 
-    public abstract void refill(Fuel fuel);
+    public void refill() {
+        setFuel(getAllowedFuels()[0]);
+        System.out.println("Машина заправлена " + getFuel());
+    }
 
     public abstract Fuel[] getAllowedFuels();
 

@@ -10,12 +10,6 @@ public class Bus extends Transport implements Competing {
         super(brand, model, engineVolume);
     }
 
-    @Override
-    public void refill(Fuel fuel) {
-        fuel.fill(this);
-        System.out.println("Машина заправлена " + fuel);
-    }
-
     public Fuel[] getAllowedFuels() {
         return new Fuel[]{new Petrol(), new Diesel()};
     }

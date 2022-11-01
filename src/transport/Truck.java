@@ -10,12 +10,6 @@ public class Truck extends Transport implements Competing{
     }
 
     @Override
-    public void refill(Fuel fuel) {
-        fuel.fill(this);
-        System.out.println("Машина заправлена " + fuel);
-    }
-
-    @Override
     public Fuel[] getAllowedFuels() {
         return new Fuel[] {new Diesel()};
     }
