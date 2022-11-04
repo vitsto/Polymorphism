@@ -1,3 +1,6 @@
+import exceptions.CheckAuthorization;
+import exceptions.WrongLoginException;
+import exceptions.WrongPasswordException;
 import license.LicenseB;
 import license.LicenseC;
 import license.LicenseD;
@@ -58,6 +61,27 @@ public class Main {
         sidorov.stop();
         System.out.println(sidorov + "\n");
 
+        petrov.setLicense(null);
+        try {
+            System.out.println("Диагностика машины " + car1 + ": " + car1.runDiagnostics());
+            System.out.println("Диагностика автобуса " + bus1 + ": " + bus1.runDiagnostics());
+            System.out.println("Диагностика грузовика " + truck1 + ": " + truck1.runDiagnostics());
+
+        } catch (IllegalDiagnosticException e) {
+            System.out.println(e.getMessage() + " y " + e.getDriver());
+        }
+
+
+        System.out.println("\nПроверка логина и пароля");
+        // Задание 1
+        try {
+            String login = "logIN";
+            String password = "pass";
+            String confirmPassword = "pass";
+            System.out.println(CheckAuthorization.checkAuthorization(login, password, confirmPassword));
+        } catch (WrongLoginException | WrongPasswordException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 }

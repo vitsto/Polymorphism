@@ -14,6 +14,7 @@ public class Driver<T extends License> {
         this.license = license;
         this.experience = experience;
         this.transport = license.getTransport();
+        this.transport.setDriver(this);
     }
 
     public String getFullName() {
