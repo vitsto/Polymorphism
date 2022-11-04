@@ -3,6 +3,8 @@ package transport;
 import fuel.Fuel;
 import utilits.Util;
 
+import java.util.Random;
+
 public abstract class Transport {
     private final String brand;
     private final String model;
@@ -46,8 +48,10 @@ public abstract class Transport {
         System.out.println(getBrand() + " " + getModel() + " закончил движение");
     }
 
-    public void refill() {
-        setFuel(getAllowedFuels()[0]);
+    public abstract void getType();
+
+    public final void refill() {
+        setFuel(getAllowedFuels()[new Random().nextInt(getAllowedFuels().length)]);
         System.out.println("Машина заправлена " + getFuel());
     }
 

@@ -6,13 +6,29 @@ import fuel.Fuel;
 import fuel.Petrol;
 
 
-public class Car extends Transport implements Competing{
-       public Car(String brand, String model, double engineVolume) {
+public class Car extends Transport implements Competing {
+    private final BodyType bodyType;
+
+    public Car(String brand, String model, double engineVolume, BodyType bodyType) {
         super(brand, model, engineVolume);
+        this.bodyType = bodyType;
+    }
+
+    @Override
+    public void getType() {
+        if (bodyType == null) {
+            System.out.println("Недостаточно данных для определения типа");
+        } else {
+            System.out.println("Тип кузова машины: " + bodyType.getBodyType());
+        }
     }
 
     public Fuel[] getAllowedFuels() {
         return new Fuel[]{new Petrol(), new Diesel(), new Electricity()};
+    }
+
+    public BodyType getBodyType() {
+        return bodyType;
     }
 
     @Override

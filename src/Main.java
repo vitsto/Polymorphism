@@ -1,31 +1,40 @@
 import license.LicenseB;
 import license.LicenseC;
 import license.LicenseD;
-import transport.Bus;
-import transport.Car;
-import transport.Driver;
-import transport.Truck;
+import transport.*;
 
 public class Main {
     public static void main(String[] args) {
-        Car car1 = new Car("Toyota", "Camri", 2.5);
-        Car car2 = new Car("Mercedes", "Benz", 3.2);
-        Car car3 = new Car("Kia", "Rio", 1.7);
-        Car car4 = new Car("Toyota", "Vitz", 0.7);
+        Car car1 = new Car("Toyota", "Camri", 2.5, BodyType.SEDAN);
+        Car car2 = new Car("Mercedes", "Benz", 3.2, BodyType.COUPE);
+        Car car3 = new Car("Kia", "Rio", 1.7, BodyType.HATCHBACK);
+        Car car4 = new Car("Toyota", "Vitz", 0.7, BodyType.HATCHBACK);
         car2.pitStop();
         System.out.println(car1.getBestTime());
+        car1.getType();
+        car2.getType();
+        car3.getType();
+        car4.getType();
 
-        Bus bus1 = new Bus("бренд 1", "модель 1", 3.0);
-        Bus bus2 = new Bus("бренд 2", "модель 2", 5.0);
-        Bus bus3 = new Bus("бренд 3", "модель 3", 2.8);
-        Bus bus4 = new Bus("бренд 4", "модель 4", 3.2);
+        Bus bus1 = new Bus("бренд 1", "модель 1", 3.0, Capacity.EXTRA_SMALL);
+        Bus bus2 = new Bus("бренд 2", "модель 2", 5.0, Capacity.MEDIUM);
+        Bus bus3 = new Bus("бренд 3", "модель 3", 2.8, Capacity.SMALL);
+        Bus bus4 = new Bus("бренд 4", "модель 4", 6.2, Capacity.LARGE);
         bus2.pitStop();
         System.out.println(bus1.getBestTime());
+        bus1.getType();
+        bus2.getType();
+        bus3.getType();
+        bus4.getType();
 
-        Truck truck1 = new Truck("бренд 1", "модель 1", 3.5);
-        Truck truck2 = new Truck("бренд 2", "модель 2", 4.0);
-        Truck truck3 = new Truck("бренд 3", "модель 3", 2.2);
-        Truck truck4 = new Truck("бренд 4", "модель 4", 3.0);
+        Truck truck1 = new Truck("бренд 1", "модель 1", 3.5, LoadCapacity.N1);
+        Truck truck2 = new Truck("бренд 2", "модель 2", 4.0, LoadCapacity.N2);
+        Truck truck3 = new Truck("бренд 3", "модель 3", 2.2, LoadCapacity.N3);
+        Truck truck4 = new Truck("бренд 4", "модель 4", 3.0, LoadCapacity.N1);
+        truck1.getType();
+        truck2.getType();
+        truck3.getType();
+        truck4.getType();
         truck2.pitStop();
         System.out.println(truck1.getBestTime());
 
@@ -48,5 +57,7 @@ public class Main {
         sidorov.refill();
         sidorov.stop();
         System.out.println(sidorov + "\n");
+
+
     }
 }

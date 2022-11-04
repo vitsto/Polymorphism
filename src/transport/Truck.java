@@ -4,9 +4,26 @@ import fuel.Diesel;
 import fuel.Fuel;
 
 public class Truck extends Transport implements Competing{
+    private final LoadCapacity loadCapacity;
 
-    public Truck(String brand, String model, double engineVolume) {
+    public Truck(String brand, String model, double engineVolume, LoadCapacity loadCapacity) {
         super(brand, model, engineVolume);
+        this.loadCapacity = loadCapacity;
+    }
+
+
+
+    public LoadCapacity getLoadCapacity() {
+        return loadCapacity;
+    }
+
+    @Override
+    public void getType() {
+        if (loadCapacity == null) {
+            System.out.println("Недостаточно данных для определения типа");
+        } else {
+            System.out.println("Максимальная грузоподъемность грзовика: " + loadCapacity.getLoadCapacity());
+        }
     }
 
     @Override

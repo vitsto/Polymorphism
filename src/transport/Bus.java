@@ -5,9 +5,24 @@ import fuel.Fuel;
 import fuel.Petrol;
 
 public class Bus extends Transport implements Competing {
+    private final Capacity capacity;
 
-    public Bus(String brand, String model, double engineVolume) {
+    public Bus(String brand, String model, double engineVolume, Capacity capacity) {
         super(brand, model, engineVolume);
+        this.capacity = capacity;
+    }
+
+    public Capacity getCapacity() {
+        return capacity;
+    }
+
+    @Override
+    public void getType() {
+        if (capacity == null) {
+            System.out.println("Недостаточно данных для определения типа");
+        } else {
+            System.out.println("Максимальная вместимость автобуса: " + capacity.getMaxCapacity());
+        }
     }
 
     public Fuel[] getAllowedFuels() {
