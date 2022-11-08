@@ -1,6 +1,7 @@
 package transport;
 
 import fuel.Fuel;
+import license.License;
 import utilits.Util;
 
 import java.util.Random;
@@ -10,6 +11,7 @@ public abstract class Transport {
     private final String model;
     private Fuel fuel;
     private double engineVolume;
+    private Driver<? extends License> driver;
 
     public Transport(String brand, String model, double engineVolume) {
         this.brand = Util.isDefine(brand) ? brand : "undefined";
@@ -19,6 +21,10 @@ public abstract class Transport {
 
     public void setEngineVolume(double engineVolume) {
         this.engineVolume = engineVolume;
+    }
+
+    public void setDriver(Driver<? extends License> driver) {
+        this.driver = driver;
     }
 
     public void setFuel(Fuel fuel) {
@@ -40,6 +46,10 @@ public abstract class Transport {
         return fuel;
     }
 
+    public Driver<? extends License> getDriver() {
+        return driver;
+    }
+
     public void start() {
         System.out.println(getBrand() + " " + getModel() + " начал движение");
     }
@@ -56,6 +66,8 @@ public abstract class Transport {
     }
 
     public abstract Fuel[] getAllowedFuels();
+
+    public abstract boolean runDiagnostics() throws IllegalDiagnosticException;
 
     @Override
     public String toString() {

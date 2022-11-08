@@ -27,6 +27,14 @@ public class Car extends Transport implements Competing {
         return new Fuel[]{new Petrol(), new Diesel(), new Electricity()};
     }
 
+    @Override
+    public boolean runDiagnostics() throws IllegalDiagnosticException {
+        if (getDriver().getLicense() == null) {
+            throw new IllegalDiagnosticException("Необходимо указать тип прав!", getDriver());
+        }
+        return true;
+    }
+
     public BodyType getBodyType() {
         return bodyType;
     }
@@ -45,4 +53,5 @@ public class Car extends Transport implements Competing {
     public double getMaxSpeed() {
         return 201;
     }
+
 }

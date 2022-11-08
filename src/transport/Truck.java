@@ -11,8 +11,6 @@ public class Truck extends Transport implements Competing{
         this.loadCapacity = loadCapacity;
     }
 
-
-
     public LoadCapacity getLoadCapacity() {
         return loadCapacity;
     }
@@ -29,6 +27,14 @@ public class Truck extends Transport implements Competing{
     @Override
     public Fuel[] getAllowedFuels() {
         return new Fuel[] {new Diesel()};
+    }
+
+    @Override
+    public boolean runDiagnostics() throws IllegalDiagnosticException {
+        if (getDriver().getLicense() == null) {
+            throw new IllegalDiagnosticException("Необходимо указать тип прав!", getDriver());
+        }
+        return true;
     }
 
     @Override
