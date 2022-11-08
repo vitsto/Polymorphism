@@ -2,8 +2,11 @@ package transport;
 
 import fuel.Fuel;
 import license.License;
+import sponsors.Contributor;
 import utilits.Util;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public abstract class Transport {
@@ -12,11 +15,15 @@ public abstract class Transport {
     private Fuel fuel;
     private double engineVolume;
     private Driver<? extends License> driver;
+    private final List<Contributor> contributors;
+    private final List<Mechanic<? extends Transport>> mechanics;
 
     public Transport(String brand, String model, double engineVolume) {
         this.brand = Util.isDefine(brand) ? brand : "undefined";
         this.model = Util.isDefine(model) ? model : "undefined";
         this.engineVolume = engineVolume == 0 ? 1.5 : engineVolume;
+        this.contributors = new ArrayList<>();
+        this.mechanics = new ArrayList<>();
     }
 
     public void setEngineVolume(double engineVolume) {
@@ -49,6 +56,19 @@ public abstract class Transport {
     public Driver<? extends License> getDriver() {
         return driver;
     }
+
+    public List<Contributor> getContributors() {
+        return contributors;
+    }
+
+    public List<Mechanic<? extends Transport>> getMechanics() {
+        return mechanics;
+    }
+
+    public void addMechanic(Mechanic<? extends Transport> mechanic) {
+        this.mechanics.add(mechanic);
+    }
+
 
     public void start() {
         System.out.println(getBrand() + " " + getModel() + " начал движение");

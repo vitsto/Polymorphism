@@ -4,7 +4,15 @@ import exceptions.WrongPasswordException;
 import license.LicenseB;
 import license.LicenseC;
 import license.LicenseD;
+import sponsors.Contributor;
+import sponsors.LegalEntity;
+import sponsors.PrivatePerson;
 import transport.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 public class Main {
     public static void main(String[] args) {
@@ -71,17 +79,32 @@ public class Main {
             System.out.println(e.getMessage() + " y " + e.getDriver());
         }
 
+        Contributor contributor1 = new PrivatePerson("Скрудж Макдак", 1250);
+        Contributor contributor2 = new PrivatePerson("Дональд Дак", 2150);
+        Contributor contributor3 = new LegalEntity("ООО \"Рога и Копыта\"", 4200);
+        Contributor contributor4 = new LegalEntity("ОАО \"Oil Trade\"", 5500);
 
-        System.out.println("\nПроверка логина и пароля");
-        // Задание 1
-        try {
-            String login = "logIN";
-            String password = "pass";
-            String confirmPassword = "pass";
-            System.out.println(CheckAuthorization.checkAuthorization(login, password, confirmPassword));
-        } catch (WrongLoginException | WrongPasswordException e) {
-            System.out.println(e.getMessage());
-        }
+        car1.getContributors().addAll(Arrays.asList(contributor1, contributor3));
+        car2.getContributors().add(contributor1);
+        car3.getContributors().add(contributor3);
 
+        truck1.getContributors().addAll(Arrays.asList(contributor2, contributor4, contributor3));
+        truck2.getContributors().add(contributor1);
+        truck2.getContributors().add(contributor2);
+
+        bus1.getContributors().add(contributor3);
+        bus2.getContributors().add(contributor4);
+
+        Mechanic<Transport> mechanic1 = new Mechanic<>("Джон Смит", "Автоленд");
+        mechanic1.addTransport(car1);
+        mechanic1.addTransport(truck1);
+        mechanic1.addTransport(bus1);
+
+        Mechanic<Car> mechanic2 = new Mechanic<>("Фрейд Рурк", "Гараж Экстрим");
+        mechanic2.addTransport(car1);
+        mechanic2.addTransport(car2);
+//        mechanic2.addTransport(truck1);
+
+        car1.getMechanics().forEach(System.out::println);
     }
 }
