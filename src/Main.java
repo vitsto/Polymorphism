@@ -105,6 +105,5 @@ public class Main {
         mechanic2.addTransport(car2);
 //        mechanic2.addTransport(truck1);
 
-        car1.getMechanics().forEach(System.out::println);
     }
 }
